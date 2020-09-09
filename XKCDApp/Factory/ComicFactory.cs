@@ -15,7 +15,7 @@ namespace XKCDApp.Factory
                 comic.Date = GetDate(jsonString);
                 return comic;
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }

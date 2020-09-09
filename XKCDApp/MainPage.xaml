@@ -1,20 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XKCDApp.MainPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:XKCDApp.Behaviors"
+             x:Class="XKCDApp.MainPage">
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36" />
+        <Frame BackgroundColor="#2196F3" CornerRadius="0">
+            <StackLayout Padding="16, 16, 0, 0">
+                <Label Text="{ Binding Comic.SafeTitle }" TextColor="White" FontSize="Subtitle" />
+                <Label Text="{Binding Comic.Date, StringFormat='{0:MM/dd/yyyy}'}" TextColor="White" FontSize="Small"/>
+            </StackLayout>
         </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10" />
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0" />
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at " />
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold" />
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="16">
+            <Image>
+            <Image.Source>
+                <UriImageSource Uri="{Binding Comic.ImageUrl}"/>
+            </Image.Source>
+        </Image>
+        <Stepper Minimum="1" Maximum="{Binding TotalComics}" StepperPosition="1" HorizontalOptions="Center">
+            <Stepper.Behaviors>
+                <behaviors:EventToCommandBehavior
+                    Command="{Binding LoadComicCommand}"
+                    EventName="ValueChanged"
+                    Converter="{StaticResource ValueChangedConverter}"/>
+            </Stepper.Behaviors>
+        </Stepper>
+        <Label Text="{Binding Comic.AlternateText}"/>
+        <Label Text="{Binding Comic.Transcript}"/>
+        </StackLayout>
+        </ScrollView>
     </StackLayout>
 </ContentPage>

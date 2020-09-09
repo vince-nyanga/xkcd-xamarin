@@ -1,18 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using XKCDApp.Services;
+using XKCDApp.ViewModels;
 
 namespace XKCDApp
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public ComicViewModel ViewModel { get; set; }  
+
+        public MainPage(ComicViewModel viewModel)
         {
+
+            ViewModel = viewModel;
             InitializeComponent();
+            BindingContext = ViewModel;
+            ViewModel.Initialize();
         }
     }
 }

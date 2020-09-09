@@ -1,6 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
+using XKCDApp.Services;
+using XKCDApp.ViewModels;
 
 namespace XKCDApp
 {
@@ -10,7 +10,9 @@ namespace XKCDApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            DependencyService.Register<IComicService, HttpComicService>();
+
+            MainPage = new MainPage(new ComicViewModel(DependencyService.Resolve<IComicService>()));
         }
 
         protected override void OnStart()

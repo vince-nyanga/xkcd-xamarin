@@ -15,6 +15,7 @@ namespace XKCDApp.UnitTests.Factory
 
             Assert.NotNull(comic);
             Assert.Equal(2020, comic.Date.Year);
+            Assert.Equal("http://test.com/", comic.ImageUrl.AbsoluteUri);
         }
 
         [Fact]
@@ -29,14 +30,17 @@ namespace XKCDApp.UnitTests.Factory
 
         private string GetValidString()
         {
-            var jobject = new JObject();
-            jobject.Add("year", "2020");
-            jobject.Add("month", "9");
-            jobject.Add("day", "9");
-            jobject.Add("safe_title", "Test");
-            jobject.Add("img", "Test");
-            jobject.Add("alt", "Test");
-            jobject.Add("transcript", "Test");
+            var jobject = new JObject
+            {
+                { "num", 1 },
+                { "year", "2020" },
+                { "month", "9" },
+                { "day", "9" },
+                { "safe_title", "Test" },
+                { "img", "http://test.com/" },
+                { "alt", "Test" },
+                { "transcript", "Test" }
+            };
             return jobject.ToString();
         }
     }

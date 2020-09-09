@@ -7,6 +7,9 @@ namespace XKCDApp.Models
     {
         public DateTime Date { get; set; }
 
+        [JsonProperty("num")]
+        public int Id { get; set; }
+
         [JsonProperty("safe_title")]
         public string SafeTitle { get; set; }
 
@@ -17,6 +20,6 @@ namespace XKCDApp.Models
         public string AlternateText { get; set; }
 
         [JsonProperty("img")]
-        public string ImageUrl { get; set; }
+        public Uri ImageUrl { get; set; }
     }
 }

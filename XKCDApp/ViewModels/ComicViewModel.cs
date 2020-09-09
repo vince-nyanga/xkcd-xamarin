@@ -14,9 +14,13 @@ namespace XKCDApp.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ICommand LoadComicCommand => new Command<int>(GetCommic);
+        public ICommand LoadComicCommand { get; }
 
-        public Comic Comic { get
+        public int TotalComics => 614;
+
+        public Comic Comic
+        {
+            get
             {
                 return _comic;
             }
@@ -30,11 +34,17 @@ namespace XKCDApp.ViewModels
         public ComicViewModel(IComicService comicService)
         {
             _comicService = comicService;
+            LoadComicCommand = new Command<double>(GetComic);
         }
 
-        private async void GetCommic(int id)
+        public void Initialize()
         {
-           Comic = await _comicService.GetComic(id);
+            GetComic(1);
+        }
+
+        private async void GetComic(double id)
+        {
+            Comic = await _comicService.GetComic((int)id);
         }
 
         private void OnPropertyChanged([CallerMemberName] string key = null)
