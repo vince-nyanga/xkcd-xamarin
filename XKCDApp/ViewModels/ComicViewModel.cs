@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XKCDApp.Models;
@@ -7,17 +6,12 @@ using XKCDApp.Services;
 
 namespace XKCDApp.ViewModels
 {
-    public class ComicViewModel : INotifyPropertyChanged
+    public class ComicViewModel : ViewModelBase
     {
         private readonly IComicService _comicService;
         private Comic _comic;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public ICommand LoadComicCommand { get; }
-
         public int TotalComics => 614;
-
         public Comic Comic
         {
             get
@@ -34,20 +28,24 @@ namespace XKCDApp.ViewModels
         public ComicViewModel(IComicService comicService)
         {
             _comicService = comicService;
-            LoadComicCommand = new Command<double>(GetComic);
+            LoadComicCommand = new Command<int>(GetComic);
         }
 
-        public void Initialize()
+        public override Task Initialize()
         {
             GetComic(1);
+            return Task.CompletedTask;
         }
 
-        private async void GetComic(double id)
+        private async void GetComic(int id)
         {
-            Comic = await _comicService.GetComic((int)id);
+            IsBusy = true;
+
+            Comic = await _comicService.GetComic(id);
+
+            IsBusy = false;
         }
 
-        private void OnPropertyChanged([CallerMemberName] string key = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(key));
+    
     }
 }

@@ -6,5 +6,6 @@
     x:Class="XKCDApp.App">
     <Application.Resources>
         <converters:ValueChangedConverter x:Key="ValueChangedConverter"/>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
     </Application.Resources>
 </Application>

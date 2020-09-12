@@ -10,7 +10,7 @@ namespace XKCDApp.Converters
         {
             if (value is ValueChangedEventArgs eventArgs)
             {
-                return eventArgs.NewValue;
+                return (int)eventArgs.NewValue;
             }
             return null;
         }
