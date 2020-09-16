@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             x:Class="XKCDApp.Views.ComicPage"
+             Title="{Binding Title}">
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" CornerRadius="0">
+            <StackLayout>
+                <Label Text="{ Binding Comic.SafeTitle }" TextColor="White" FontSize="Subtitle" />
+                <Label Text="{Binding Comic.Date, StringFormat='{0:MM/dd/yyyy}'}" TextColor="White" FontSize="Small"/>
+            </StackLayout>
+        </Frame>
+        <ScrollView IsVisible="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}">
+            <StackLayout Padding="16" Spacing="16">
+                <Image>
+                    <Image.Source>
+                        <UriImageSource Uri="{Binding Comic.ImageUrl}"/>
+                    </Image.Source>
+                </Image>
+                <Stepper Minimum="1" Maximum="{Binding TotalComics}" StepperPosition="1" HorizontalOptions="Center">
+                    <Stepper.Behaviors>
+                        <prism:EventToCommandBehavior
+                            Command="{Binding LoadComicCommand}"
+                            EventName="ValueChanged"
+                            EventArgsConverter="{StaticResource ValueChangedConverter}"/>
+                    </Stepper.Behaviors>
+                </Stepper>
+                <Label Text="{Binding Comic.AlternateText}"/>
+                <Label Text="{Binding Comic.Transcript}"/>
+            </StackLayout>
+        </ScrollView>
+        <ActivityIndicator IsRunning="True" IsVisible="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+    </StackLayout>
+</ContentPage>

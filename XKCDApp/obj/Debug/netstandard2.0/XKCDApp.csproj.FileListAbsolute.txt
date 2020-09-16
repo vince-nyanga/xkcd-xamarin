@@ -1,0 +1,12 @@
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\bin\Debug\netstandard2.0\XKCDApp.deps.json
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\bin\Debug\netstandard2.0\XKCDApp.dll
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\bin\Debug\netstandard2.0\XKCDApp.pdb
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\Views\ComicPage.xaml.g.cs
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\XKCDApp.AssemblyInfoInputs.cache
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\XKCDApp.AssemblyInfo.cs
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\XKCDApp.csproj.CoreCompileInputs.cache
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\XKCDApp.dll
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\XKCDApp.pdb
+C:\Users\vincen03\source\repos\XKCDApp\XKCDApp\obj\Debug\netstandard2.0\XKCDApp.csprojAssemblyReference.cache
